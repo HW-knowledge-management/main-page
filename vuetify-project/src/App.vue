@@ -38,18 +38,19 @@
             <v-sheet rounded="lg">
               <v-list rounded="lg">
                 <v-list-item
-                  v-for="n in 5"
                   :key="n"
                   link
-                  :title="`List Item ${n}`"
-                ></v-list-item>
+                  :title="`HW-knowledge Q&A`"
+		  @click="handleHWknowledgeQAClick"
+               
+		  ></v-list-item>
 
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
                   color="grey-lighten-4"
                   link
-                  title="Refresh"
+                  title="WIKI"
                 ></v-list-item>
               </v-list>
             </v-sheet>
@@ -76,6 +77,10 @@
     'Profile',
     'Updates',
   ]
+    const handleHWKnowledgeQAClick = (event) => {
+    console.log(`handleHWKnowledgeQAClick clicked!`, event);
+  };
+
 </script>
 
 <script>
