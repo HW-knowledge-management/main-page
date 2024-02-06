@@ -6,7 +6,7 @@
           class="me-4 "
           color="grey-darken-1"
           size="32"
-        ></v-avatar>
+	></v-avatar>
 
         <v-btn
           v-for="link in links"
@@ -46,12 +46,9 @@
                   :key="n"
                   link
                   :title="`HW-knowledge Q&A`"
-		  @click="handleHWknowledgeQAClick"
-               
-		  ></v-list-item>
-
+		  @click="handleHWknowledgeQAClick"></v-list-item>
                 <v-divider class="my-2"></v-divider>
-
+		
                 <v-list-item
                   color="grey-lighten-4"
                   link
@@ -82,6 +79,7 @@
     'Profile',
     'Updates',
   ]
+
     const handleHWKnowledgeQAClick = (event) => {
     console.log(`handleHWKnowledgeQAClick clicked!`, event);
   };
@@ -100,3 +98,12 @@ function showComponent(link){
 
 }
 </script>
+<style scoped>
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+</style>
