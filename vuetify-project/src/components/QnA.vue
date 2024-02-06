@@ -43,6 +43,7 @@ function addQuestion(newQuestion) {
 </script>
 
 <template>
+<<<<<<< HEAD
     <h1>QnA</h1>
     <hr />
     <form @submit="submitForm"> 
@@ -54,6 +55,18 @@ function addQuestion(newQuestion) {
         <div v-for="(item, index) in paginatedQuestions" :key="index">
             {{ item.title }} - {{ item.content }}
         </div>
+=======
+<h1>QnA</h1>
+<hr />
+<form @submit.prevent="submitForm()">
+    <h2>질문하기</h2>
+    <textarea></textarea>
+    <input type="submit" value="확인" />
+</form>
+<div>
+    <div v-for="item in questionData" v-bind:key="item">
+        {{ item.title }} - {{ item.content }}
+>>>>>>> 088410f2d2f734197810ebbc2fb6f3199a1dbdc0
     </div>
     <!-- 페이징 컴포넌트 추가 -->
     <v-pagination
