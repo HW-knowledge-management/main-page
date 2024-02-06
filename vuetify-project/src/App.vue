@@ -6,7 +6,7 @@
           class="me-4 "
           color="grey-darken-1"
           size="32"
-        ></v-avatar>
+	></v-avatar>
 
         <v-btn
           v-for="link in links"
@@ -37,15 +37,17 @@
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
-                <v-list-item
-                  v-for="n in 5"
-                  :key="n"
-                  link
-                  :title="`List Item ${n}`"
-                ></v-list-item>
-
+                <v-list-item link>  
+		<router-link to="/wiki">
+		WIKI
+		</router-link>
+		</v-list-item>
+		
+		<v-list-item link>
+		Q&A
+		</v-list-item>
                 <v-divider class="my-2"></v-divider>
-
+		
                 <v-list-item
                   color="grey-lighten-4"
                   link
@@ -60,6 +62,8 @@
               min-height="70vh"
               rounded="lg"
             >
+		
+		<Wiki />
               <!--  -->
             </v-sheet>
           </v-col>
@@ -70,23 +74,22 @@
 </template>
 
 <script setup>
+  import Wiki from './components/Wiki.vue';
+
   const links = [
     'Dashboard',
     'Messages',
     'Profile',
     'Updates',
   ]
-</script>
 
-<script>
-  export default {
-    data: () => ({
-      links: [
-        'Dashboard',
-        'Messages',
-        'Profile',
-        'Updates',
-      ],
-    }),
-  }
 </script>
+<style scoped>
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+</style>
