@@ -37,13 +37,18 @@
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
+               <v-list-item link title="QnA" @click="showComponent('QnA')">                
+               </v-list-item>
+               <v-list-item link title="wiki" @click="showComponent('wiki')">                
+               </v-list-item>
+<!--
                 <v-list-item
                   v-for="n in 5"
                   :key="n"
                   link
                   :title="`List Item ${n}`"
                 ></v-list-item>
-
+-->
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
@@ -60,7 +65,7 @@
               min-height="70vh"
               rounded="lg"
             >
-              <!--  -->
+            <component :is="currentComponent" />
             </v-sheet>
           </v-col>
         </v-row>
@@ -70,23 +75,18 @@
 </template>
 
 <script setup>
-  const links = [
-    'Dashboard',
-    'Messages',
-    'Profile',
-    'Updates',
-  ]
-</script>
+import QnA from './components/QnA.vue'
+import wiki from './components/wiki.vue'
 
-<script>
-  export default {
-    data: () => ({
-      links: [
-        'Dashboard',
-        'Messages',
-        'Profile',
-        'Updates',
-      ],
-    }),
+import { ref } from 'vue'
+
+const currentComponent = ref(QnA)
+function showComponent(link){
+  if(link === 'QnA'){
+    currentComponent.value = QnA
+  } else if(link === 'wiki'){
+    currentComponent.value = wiki
   }
+
+}
 </script>
