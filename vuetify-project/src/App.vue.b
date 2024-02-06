@@ -1,5 +1,4 @@
 <template>
-
   <v-app id="inspire">
     <v-app-bar flat>
       <v-container class="mx-auto d-flex align-center justify-center">
@@ -16,12 +15,12 @@
           variant="text"
         ></v-btn>
 
-
         <v-spacer></v-spacer>
 
-        <!-- <v-responsive max-width="160">
-          <v-text-field
-            ref="searchField"
+<!--  -->
+
+        <v-responsive max-width="160">
+          <span v-text-field = "msg"
             density="compact"
             flat
             hide-details
@@ -29,38 +28,27 @@
             rounded="lg"
             single-line
             variant="solo-filled"
-          ></v-text-field>
-        </v-responsive> -->
+          ></span>
+        </v-responsive>
 
-        <input v-model="message" placeholder="Search">
-			    
+<!--  -->
+
       </v-container>
     </v-app-bar>
 
     <v-main class="bg-grey-lighten-3">
-      
       <v-container>
         <v-row>
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
-               <v-list-item link title="QnA" @click="showComponent('QnA')">                
-               </v-list-item>
-               <v-list-item link title="wiki" @click="showComponent('wiki')">                               
-               </v-list-item>
-               <v-list-item link title="sign-up" @click="showComponent('sign-up')">                
-               </v-list-item>
-               <v-list-item link title="sign-in" @click="showComponent('sign-in')">                
-               </v-list-item>
-
-<!--
                 <v-list-item
                   v-for="n in 5"
                   :key="n"
                   link
                   :title="`List Item ${n}`"
                 ></v-list-item>
--->
+
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
@@ -71,18 +59,15 @@
               </v-list>
             </v-sheet>
           </v-col>
-          
+
           <v-col>
             <v-sheet
               min-height="70vh"
               rounded="lg"
             >
               <!--  -->
-              <p>{{message}}</p>
-              <h1>hi</h1>
             </v-sheet>
           </v-col>
-          
         </v-row>
       </v-container>
     </v-main>
@@ -90,11 +75,8 @@
 </template>
 
 <script setup>
-
 // import Child from './components/Child.vue'
-import data from '/home/jelly/code/HW-knowledge-management/json-server/db.json'
-import {ref} from 'vue'
-const message = ref('')
+import name from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
 
 
   const links = [
@@ -105,18 +87,15 @@ const message = ref('')
   ]
 </script>
 
-const currentComponent = ref(QnA)
-function showComponent(link){
-  if(link === 'QnA'){
-    currentComponent.value = QnA
-  } else if(link === 'wiki'){
-    currentComponent.value = wiki
-  } else if(link === 'sign-up'){
-    currentComponent.value = signup
-  } else if(link === 'sign-in'){
-    currentComponent.value = signin
+<script>
+  export default {
+    data: () => ({
+      links: [
+        'Dashboard',
+        'Messages',
+        'Profile',
+        'Updates',
+      ],
+    }),
   }
-
-}
-
 </script>
