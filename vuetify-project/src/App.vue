@@ -37,23 +37,15 @@
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
-               <v-list-item link title="QnA" @click="showComponent('QnA')">                
+               <v-list-item link title="QnA" @click="showComponent('QnA')">
                </v-list-item>
-               <v-list-item link title="wiki" @click="showComponent('wiki')">                               
+               <v-list-item link title="wiki" @click="showComponent('wiki')">
                </v-list-item>
-               <v-list-item link title="sign-up" @click="showComponent('sign-up')">                
+               <v-list-item link title="sign-up" @click="showComponent('sign-up')">
                </v-list-item>
-               <v-list-item link title="sign-in" @click="showComponent('sign-in')">                
+               <v-list-item link title="sign-in" @click="showComponent('sign-in')">
                </v-list-item>
 
-<!--
-                <v-list-item
-                  v-for="n in 5"
-                  :key="n"
-                  link
-                  :title="`List Item ${n}`"
-                ></v-list-item>
--->
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
@@ -65,15 +57,13 @@
             </v-sheet>
           </v-col>
 
-          <v-col>
+
             <v-sheet
               min-height="70vh"
-              rounded="lg"
-            >
-          
+              rounded="lg" >
             <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
+            <v-pagination    v-model="currentPage"    :length="totalPages"    @input="changePage" ></v-pagination>
             </v-sheet>
-          </v-col>
         </v-row>
       </v-container>
     </v-main>
@@ -85,39 +75,58 @@ import QnA from './components/QnA.vue'
 import wiki from './components/wiki.vue'
 import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import Cookies from 'js-cookie'
 
 const username = ref(Cookies.get('username'))
 
 const currentComponent = ref(QnA)
 
-onMounted(() => {
-  if(!username.value){
+const itemsPerPage = 5; // 페이지당 항목 수
+const currentPage = ref(1); // 현재 페이지
+const totalItems = ref(0); // 전체 항목 수
+
+async function fetchData() {
+  const res = await fetch('http://localhost:3001/Question');
+  const data = await res.json();
+  totalItems.value = data.length; 
+}
+
+onMounted(async () => {
+  if (!username.value) {
     currentComponent.value = signin
+  } else {
+    await fetchData(); 
   }
 })
 
-function showComponent(link){
-  if(link === 'QnA'){
-    if(!Cookies.get('username')){
-    currentComponent.value = signin
-  }
-    else {currentComponent.value = QnA}
-  } else if(link === 'wiki'){
-    if(!Cookies.get('username')){
-    currentComponent.value = signin
-  }
-    else {currentComponent.value = wiki}
-  } else if(link === 'sign-up'){
-    currentComponent.value = signup
-  } else if(link === 'sign-in'){
-    currentComponent.value = signin
-  }
+const totalPages = computed(() => Math.ceil(totalItems.value / itemsPerPage)); // 전체 페이지 수
 
+function changePage(page) {
+  currentPage.value = page;
 }
 
-function handleSignupSuccess(){
+function showComponent(link) {
+  if (link === 'QnA') {
+    if (!Cookies.get('username')) {
+      currentComponent.value = signin
+    } else {
+      currentComponent.value = QnA
+    }
+  } else if (link === 'wiki') {
+    if (!Cookies.get('username')) {
+      currentComponent.value = signin
+    } else {
+      currentComponent.value = wiki
+    }
+  } else if (link === 'sign-up') {
+    currentComponent.value = signup
+  } else if (link === 'sign-in') {
+    currentComponent.value = signin
+  }
+}
+
+function handleSignupSuccess() {
   currentComponent.value = QnA
 }
 
