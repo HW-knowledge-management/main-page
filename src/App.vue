@@ -1,4 +1,8 @@
-App.vue
+ <script setup>
+ import db from "@/json-server/db.json"
+ 
+ </script>
+
 <template>
   <v-app id="inspire">
     <v-app-bar flat>
