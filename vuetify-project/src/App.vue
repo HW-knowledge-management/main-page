@@ -15,10 +15,12 @@
           variant="text"
         ></v-btn>
 
+
         <v-spacer></v-spacer>
 
-        <v-responsive max-width="160">
+        <!-- <v-responsive max-width="160">
           <v-text-field
+            ref="searchField"
             density="compact"
             flat
             hide-details
@@ -27,11 +29,15 @@
             single-line
             variant="solo-filled"
           ></v-text-field>
-        </v-responsive>
+        </v-responsive> -->
+
+        <input v-model="message" placeholder="Search">
+			    
       </v-container>
     </v-app-bar>
 
     <v-main class="bg-grey-lighten-3">
+      
       <v-container>
         <v-row>
           <v-col cols="2">
@@ -64,15 +70,27 @@
               </v-list>
             </v-sheet>
           </v-col>
-
+          
           <v-col>
             <v-sheet
               min-height="70vh"
               rounded="lg"
             >
+<<<<<<< HEAD
             <component :is="currentComponent" />
+=======
+
+            
+              <!--  -->
+              <p>{{message}}</p>
+              <h1>hi</h1>
+
+
+
+>>>>>>> 44bcf92a90f493d30e61342b4fd28dfaeb3c9818
             </v-sheet>
           </v-col>
+          
         </v-row>
       </v-container>
     </v-main>
@@ -80,11 +98,27 @@
 </template>
 
 <script setup>
+<<<<<<< HEAD
 import QnA from './components/QnA.vue'
 import wiki from './components/wiki.vue'
 import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
 import { ref } from 'vue'
+=======
+// import Child from './components/Child.vue'
+import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
+import {ref} from 'vue'
+const message = ref('')
+
+
+  const links = [
+    'Dashboard',
+    'Messages',
+    'Profile',
+    'Updates',
+  ]
+</script>
+>>>>>>> 44bcf92a90f493d30e61342b4fd28dfaeb3c9818
 
 const currentComponent = ref(QnA)
 function showComponent(link){
