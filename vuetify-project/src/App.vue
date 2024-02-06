@@ -14,7 +14,7 @@
           variant="text"
         ></v-btn>
         <v-spacer></v-spacer>
-        <v-responsive max-width="160">
+        <v-responsive max-width="250">
           <v-text-field
             density="compact"
             flat
@@ -30,7 +30,7 @@
     <v-main class="bg-grey-lighten-3">
       <v-container>
         <v-row>
-          <v-col cols="2">
+          <v-col cols="3">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
                <v-list-item link title="QnA" @click="showComponent('QnA')">
@@ -56,14 +56,14 @@
 
             <v-sheet
               min-height="70vh"
+	      min-width="700"
               rounded="lg" >
             <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
             </v-sheet>
         </v-row>
       </v-container>
     </v-main>
-    <!-- Pagination 요소를 template 태그 안에 넣기 -->
-    <template v-if="totalPages > 1">
+       <template v-if="totalPages > 1">
       <v-pagination v-model="currentPage" :length="totalPages" @input="changePage"></v-pagination>
     </template>
   </v-app>
