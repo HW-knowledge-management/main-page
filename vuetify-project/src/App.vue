@@ -15,12 +15,10 @@
           variant="text"
         ></v-btn>
 
-
         <v-spacer></v-spacer>
 
-        <!-- <v-responsive max-width="160">
+        <v-responsive max-width="160">
           <v-text-field
-            ref="searchField"
             density="compact"
             flat
             hide-details
@@ -29,15 +27,11 @@
             single-line
             variant="solo-filled"
           ></v-text-field>
-        </v-responsive> -->
-
-        <input v-model="message" placeholder="Search">
-			    
+        </v-responsive>
       </v-container>
     </v-app-bar>
 
     <v-main class="bg-grey-lighten-3">
-      
       <v-container>
         <v-row>
           <v-col cols="2">
@@ -70,16 +64,16 @@
               </v-list>
             </v-sheet>
           </v-col>
-          
+
           <v-col>
             <v-sheet
               min-height="70vh"
               rounded="lg"
             >
+          
             <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
             </v-sheet>
           </v-col>
-          
         </v-row>
       </v-container>
     </v-main>
@@ -94,26 +88,27 @@ import signin from './components/sign-in.vue'
 import { ref, onMounted } from 'vue'
 import Cookies from 'js-cookie'
 
-const username = Cookies.get('username')
+const username = ref(Cookies.get('username'))
+
 const currentComponent = ref(QnA)
 
 onMounted(() => {
-  if(!username){
+  if(!username.value){
     currentComponent.value = signin
   }
 })
 
 function showComponent(link){
   if(link === 'QnA'){
-    if(!username){
+    if(!Cookies.get('username')){
     currentComponent.value = signin
   }
-    else currentComponent.value = QnA
+    else {currentComponent.value = QnA}
   } else if(link === 'wiki'){
-    if(!username){
+    if(!Cookies.get('username')){
     currentComponent.value = signin
   }
-    else currentComponent.value = wiki
+    else {currentComponent.value = wiki}
   } else if(link === 'sign-up'){
     currentComponent.value = signup
   } else if(link === 'sign-in'){

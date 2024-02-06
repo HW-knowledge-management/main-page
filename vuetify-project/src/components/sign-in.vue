@@ -20,17 +20,24 @@ async function submitForm() {
 
     const result = userData.value.find(item => item.userId === username.value)
 
-    console.log(userData.value.length)
-
     if(!result){
-        alert('없는 ID입니다.')
         username.value = ''
+        password.value = ''
+        Cookies.remove('username')
+        alert('없는 ID입니다.')
     } else{
 
         if(password.value === result.password){
 
-            Cookies.set('username', 'password', { expires: 1, path: '' })
+            Cookies.set('username', username.value, { expires: 1, path: '' })
+            Cookies.set('password', password.value, { expires: 1, path: '' })
             emit('changeComponent');
+        }
+        else {
+            username.value = ''
+            password.value = ''
+            Cookies.remove('username')
+            alert('비밀번호가 틀렸습니다.')
         }
 
 

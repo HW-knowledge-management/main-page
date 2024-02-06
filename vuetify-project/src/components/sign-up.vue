@@ -40,7 +40,9 @@ async function submitForm() {
  
         })
 
-        Cookies.set('username', 'password', { expires: 1, path: '' })
+        Cookies.set('username', username.value, { expires: 1, path: '' })
+        Cookies.set('password', password.value, { expires: 1, path: '' })
+
         emit('changeComponent');
 
     }
