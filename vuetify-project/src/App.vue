@@ -7,16 +7,13 @@
           color="grey-darken-1"
           size="32"
         ></v-avatar>
-
         <v-btn
           v-for="link in links"
           :key="link"
           :text="link"
           variant="text"
         ></v-btn>
-
         <v-spacer></v-spacer>
-
         <v-responsive max-width="160">
           <v-text-field
             density="compact"
@@ -30,7 +27,6 @@
         </v-responsive>
       </v-container>
     </v-app-bar>
-
     <v-main class="bg-grey-lighten-3">
       <v-container>
         <v-row>
@@ -62,11 +58,14 @@
               min-height="70vh"
               rounded="lg" >
             <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
-            <v-pagination    v-model="currentPage"    :length="totalPages"    @input="changePage" ></v-pagination>
             </v-sheet>
         </v-row>
       </v-container>
     </v-main>
+    <!-- Pagination 요소를 template 태그 안에 넣기 -->
+    <template v-if="totalPages > 1">
+      <v-pagination v-model="currentPage" :length="totalPages" @input="changePage"></v-pagination>
+    </template>
   </v-app>
 </template>
 
@@ -77,35 +76,27 @@ import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
 import { ref, onMounted, computed } from 'vue'
 import Cookies from 'js-cookie'
-
 const username = ref(Cookies.get('username'))
-
 const currentComponent = ref(QnA)
-
 const itemsPerPage = 5; // 페이지당 항목 수
 const currentPage = ref(1); // 현재 페이지
 const totalItems = ref(0); // 전체 항목 수
-
 async function fetchData() {
   const res = await fetch('http://localhost:3001/Question');
   const data = await res.json();
-  totalItems.value = data.length; 
+  totalItems.value = data.length;
 }
-
 onMounted(async () => {
   if (!username.value) {
     currentComponent.value = signin
   } else {
-    await fetchData(); 
+    await fetchData();
   }
 })
-
 const totalPages = computed(() => Math.ceil(totalItems.value / itemsPerPage)); // 전체 페이지 수
-
 function changePage(page) {
   currentPage.value = page;
 }
-
 function showComponent(link) {
   if (link === 'QnA') {
     if (!Cookies.get('username')) {
@@ -125,10 +116,8 @@ function showComponent(link) {
     currentComponent.value = signin
   }
 }
-
 function handleSignupSuccess() {
   currentComponent.value = QnA
 }
-
 </script>
 
