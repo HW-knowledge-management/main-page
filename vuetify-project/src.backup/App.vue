@@ -1,5 +1,4 @@
 <template>
-
   <v-app id="inspire">
     <v-app-bar flat>
       <v-container class="mx-auto d-flex align-center justify-center">
@@ -76,7 +75,6 @@
           </v-col>
         </v-row>
       </v-container>
->>>>>>> e3c9775390fa8d5fe0eb592c1c495a8bd86ea51d
     </v-main>
   </v-app>
 </template>
