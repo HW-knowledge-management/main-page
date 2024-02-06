@@ -31,8 +31,12 @@
           ></v-text-field>
         </v-responsive> -->
 
-        <input v-model="message" placeholder="Search">
-			    
+        <!-- <input v-model="message" placeholder="Search"> -->
+
+        <div>
+          <input v-model="message" placeholder="Search">
+          <button @click="search">검색</button>
+        </div>
       </v-container>
     </v-app-bar>
 
@@ -67,10 +71,20 @@
               rounded="lg"
             >
 
-            
-              <!--  -->
+
+            <searchdata :contentOfWIKI="message"/>
+              <!--  
+              <li v-for = "(dt) in dts">
+                {{ dt.Question }}
+              </li>
+              
               <p>{{message}}</p>
               <h1>hi</h1>
+-->
+
+
+              <!-- <v-list-item link title="QnA" @click="showComponent('QnA')">                
+              </v-list-item> -->
 
 
 
@@ -85,9 +99,15 @@
 
 <script setup>
 // import Child from './components/Child.vue'
-import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
+// import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
+import searchdata from './components/search.vue'
 import {ref} from 'vue'
 const message = ref('')
+//const dts = ref(data)
+
+function search() {
+  console.log("검색어 : ", message.value)
+}
 
 
   const links = [
