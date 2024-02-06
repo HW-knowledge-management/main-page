@@ -15,12 +15,12 @@
           variant="text"
         ></v-btn>
 
-
         <v-spacer></v-spacer>
 
-        <!-- <v-responsive max-width="160">
-          <v-text-field
-            ref="searchField"
+<!--  -->
+
+        <v-responsive max-width="160">
+          <span v-text-field = "msg"
             density="compact"
             flat
             hide-details
@@ -28,16 +28,15 @@
             rounded="lg"
             single-line
             variant="solo-filled"
-          ></v-text-field>
-        </v-responsive> -->
+          ></span>
+        </v-responsive>
 
-        <input v-model="message" placeholder="Search">
-			    
+<!--  -->
+
       </v-container>
     </v-app-bar>
 
     <v-main class="bg-grey-lighten-3">
-      
       <v-container>
         <v-row>
           <v-col cols="2">
@@ -60,23 +59,15 @@
               </v-list>
             </v-sheet>
           </v-col>
-          
+
           <v-col>
             <v-sheet
               min-height="70vh"
               rounded="lg"
             >
-
-            
               <!--  -->
-              <p>{{message}}</p>
-              <h1>hi</h1>
-
-
-
             </v-sheet>
           </v-col>
-          
         </v-row>
       </v-container>
     </v-main>
@@ -85,9 +76,7 @@
 
 <script setup>
 // import Child from './components/Child.vue'
-import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
-import {ref} from 'vue'
-const message = ref('')
+import name from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
 
 
   const links = [
