@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-
 const questionId = ref(1)
 const questionData = ref(null)
 async function getList() {
@@ -17,15 +16,4 @@ getList()
 
 <template>
 <h1>QnA</h1>
-<hr />
-<form>
-    <h2>질문하기</h2>
-    <textarea></textarea>
-    <input type="submit" value="확인"></input>
-</form>
-<div>
-    <div v-for="item in questionData">
-        {{ item.title }} - {{ item.content }}
-    </div>
-</div>
 </template>            
