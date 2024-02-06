@@ -1,7 +1,7 @@
 <script setup>
-
+import { ref } from 'vue'
 </script>
 
 <template>
-	<h2>안녕하세요</h2>
+<h1>sign-in</h1>
 </template>
