@@ -37,17 +37,6 @@
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
-<<<<<<< HEAD
-                <v-list-item link>  
-		<router-link to="/wiki">
-		WIKI
-		</router-link>
-		</v-list-item>
-		
-		<v-list-item link>
-		Q&A
-		</v-list-item>
-=======
                <v-list-item link title="QnA" @click="showComponent('QnA')">                
                </v-list-item>
                <v-list-item link title="wiki" @click="showComponent('wiki')">                
@@ -57,11 +46,7 @@
                   :key="n"
                   link
                   :title="`HW-knowledge Q&A`"
-		  @click="handleHWknowledgeQAClick"
-               
-		  ></v-list-item>
-
->>>>>>> 7467585dbd3c48623561d9e8d7f9284be069e464
+		  @click="handleHWknowledgeQAClick"></v-list-item>
                 <v-divider class="my-2"></v-divider>
 		
                 <v-list-item
@@ -78,13 +63,7 @@
               min-height="70vh"
               rounded="lg"
             >
-<<<<<<< HEAD
-		
-		<Wiki />
-              <!--  -->
-=======
             <component :is="currentComponent" />
->>>>>>> 7467585dbd3c48623561d9e8d7f9284be069e464
             </v-sheet>
           </v-col>
         </v-row>
@@ -94,17 +73,13 @@
 </template>
 
 <script setup>
-  import Wiki from './components/Wiki.vue';
-
   const links = [
     'Dashboard',
     'Messages',
     'Profile',
     'Updates',
   ]
-<<<<<<< HEAD
 
-=======
     const handleHWKnowledgeQAClick = (event) => {
     console.log(`handleHWKnowledgeQAClick clicked!`, event);
   };
@@ -122,7 +97,6 @@ function showComponent(link){
   }
 
 }
->>>>>>> 7467585dbd3c48623561d9e8d7f9284be069e464
 </script>
 <style scoped>
 .container {
