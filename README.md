@@ -7,4 +7,3 @@
 
 # 주의할 점
 - pullRequest시 Branch 새로 만들어서 올리기
-- 
