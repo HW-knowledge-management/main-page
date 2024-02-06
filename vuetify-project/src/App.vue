@@ -1,5 +1,4 @@
 <template>
-
   <v-app id="inspire">
     <v-app-bar flat>
       <v-container class="mx-auto d-flex align-center justify-center">
@@ -77,9 +76,7 @@
               min-height="70vh"
               rounded="lg"
             >
-              <!--  -->
-              <p>{{message}}</p>
-              <h1>hi</h1>
+            <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
             </v-sheet>
           </v-col>
           
@@ -90,33 +87,43 @@
 </template>
 
 <script setup>
+import QnA from './components/QnA.vue'
+import wiki from './components/wiki.vue'
+import signup from './components/sign-up.vue'
+import signin from './components/sign-in.vue'
+import { ref, onMounted } from 'vue'
+import Cookies from 'js-cookie'
 
-// import Child from './components/Child.vue'
-import data from '/home/jelly/code/HW-knowledge-management/json-server/db.json'
-import {ref} from 'vue'
-const message = ref('')
-
-
-  const links = [
-    'Dashboard',
-    'Messages',
-    'Profile',
-    'Updates',
-  ]
-</script>
-
+const username = Cookies.get('username')
 const currentComponent = ref(QnA)
+
+onMounted(() => {
+  if(!username){
+    currentComponent.value = signin
+  }
+})
+
 function showComponent(link){
   if(link === 'QnA'){
-    currentComponent.value = QnA
+    if(!username){
+    currentComponent.value = signin
+  }
+    else currentComponent.value = QnA
   } else if(link === 'wiki'){
-    currentComponent.value = wiki
+    if(!username){
+    currentComponent.value = signin
+  }
+    else currentComponent.value = wiki
   } else if(link === 'sign-up'){
     currentComponent.value = signup
   } else if(link === 'sign-in'){
     currentComponent.value = signin
   }
 
+}
+
+function handleSignupSuccess(){
+  currentComponent.value = QnA
 }
 
 </script>
