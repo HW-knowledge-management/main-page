@@ -123,3 +123,26 @@ function handleSignupSuccess(){
 
 </script>
 
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyB2VE7M9RE5hCW5ZGVMHZGrCWV8TUQmP70",
+    authDomain: "team2-kms.firebaseapp.com",
+    projectId: "team2-kms",
+    storageBucket: "team2-kms.appspot.com",
+    messagingSenderId: "1047209731876",
+    appId: "1:1047209731876:web:2749b1d1ed2d262e96b5b1",
+    measurementId: "G-4MRK1CH97W"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
