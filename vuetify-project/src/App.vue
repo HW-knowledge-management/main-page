@@ -37,6 +37,7 @@
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
+<<<<<<< HEAD
                 <v-list-item link>  
 		<router-link to="/wiki">
 		WIKI
@@ -46,12 +47,27 @@
 		<v-list-item link>
 		Q&A
 		</v-list-item>
+=======
+               <v-list-item link title="QnA" @click="showComponent('QnA')">                
+               </v-list-item>
+               <v-list-item link title="wiki" @click="showComponent('wiki')">                
+               </v-list-item>
+<!--
+                <v-list-item
+                  :key="n"
+                  link
+                  :title="`HW-knowledge Q&A`"
+		  @click="handleHWknowledgeQAClick"
+               
+		  ></v-list-item>
+
+>>>>>>> 7467585dbd3c48623561d9e8d7f9284be069e464
                 <v-divider class="my-2"></v-divider>
 		
                 <v-list-item
                   color="grey-lighten-4"
                   link
-                  title="Refresh"
+                  title="WIKI"
                 ></v-list-item>
               </v-list>
             </v-sheet>
@@ -62,9 +78,13 @@
               min-height="70vh"
               rounded="lg"
             >
+<<<<<<< HEAD
 		
 		<Wiki />
               <!--  -->
+=======
+            <component :is="currentComponent" />
+>>>>>>> 7467585dbd3c48623561d9e8d7f9284be069e464
             </v-sheet>
           </v-col>
         </v-row>
@@ -82,7 +102,27 @@
     'Profile',
     'Updates',
   ]
+<<<<<<< HEAD
 
+=======
+    const handleHWKnowledgeQAClick = (event) => {
+    console.log(`handleHWKnowledgeQAClick clicked!`, event);
+  };
+
+</script>
+
+import { ref } from 'vue'
+
+const currentComponent = ref(QnA)
+function showComponent(link){
+  if(link === 'QnA'){
+    currentComponent.value = QnA
+  } else if(link === 'wiki'){
+    currentComponent.value = wiki
+  }
+
+}
+>>>>>>> 7467585dbd3c48623561d9e8d7f9284be069e464
 </script>
 <style scoped>
 .container {
