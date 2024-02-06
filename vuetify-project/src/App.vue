@@ -43,18 +43,19 @@
                </v-list-item>
 <!--
                 <v-list-item
-                  v-for="n in 5"
                   :key="n"
                   link
-                  :title="`List Item ${n}`"
-                ></v-list-item>
--->
+                  :title="`HW-knowledge Q&A`"
+		  @click="handleHWknowledgeQAClick"
+               
+		  ></v-list-item>
+
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
                   color="grey-lighten-4"
                   link
-                  title="Refresh"
+                  title="WIKI"
                 ></v-list-item>
               </v-list>
             </v-sheet>
@@ -75,8 +76,17 @@
 </template>
 
 <script setup>
-import QnA from './components/QnA.vue'
-import wiki from './components/wiki.vue'
+  const links = [
+    'Dashboard',
+    'Messages',
+    'Profile',
+    'Updates',
+  ]
+    const handleHWKnowledgeQAClick = (event) => {
+    console.log(`handleHWKnowledgeQAClick clicked!`, event);
+  };
+
+</script>
 
 import { ref } from 'vue'
 
