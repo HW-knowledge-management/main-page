@@ -105,10 +105,11 @@ function showComponent(link){
   }
     else {currentComponent.value = QnA}
   } else if(link === 'wiki'){
-    if(!Cookies.get('username')){
-    currentComponent.value = signin
-  }
-    else {currentComponent.value = wiki}
+  //   if(!Cookies.get('username')){
+  //   currentComponent.value = wiki
+  // }
+  //   else {currentComponent.value = wiki}
+    currentComponent.value = wiki
   } else if(link === 'sign-up'){
     currentComponent.value = signup
   } else if(link === 'sign-in'){
