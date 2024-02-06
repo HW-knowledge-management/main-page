@@ -14,6 +14,7 @@
           variant="text"
         ></v-btn>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <v-spacer></v-spacer>
         <v-responsive max-width="250">
 =======
@@ -23,6 +24,12 @@
 
         <!-- <v-responsive max-width="160">
 >>>>>>> 088410f2d2f734197810ebbc2fb6f3199a1dbdc0
+=======
+
+        <v-spacer></v-spacer>
+        <v-responsive max-width="250">
+
+>>>>>>> 6d62b3918dd21dd73d834e4844f98c2506514e1d
           <v-text-field
             ref="searchField"
             density="compact"
@@ -56,16 +63,23 @@
                <v-list-item link title="wiki" @click="showComponent('wiki')">
                </v-list-item>
 <<<<<<< HEAD
+<<<<<<< HEAD
                <v-list-item link title="sign-up" @click="showComponent('sign-up')">
 =======
                <v-list-item link title="viewwiki" @click="showComponent('viewwiki')">                               
                </v-list-item>
                <v-list-item link title="sign-up" @click="showComponent('sign-up')">                
 >>>>>>> 088410f2d2f734197810ebbc2fb6f3199a1dbdc0
+=======
+
+               <v-list-item link title="sign-up" @click="showComponent('sign-up')">
+
+>>>>>>> 6d62b3918dd21dd73d834e4844f98c2506514e1d
                </v-list-item>
                <v-list-item link title="sign-in" @click="showComponent('sign-in')">
                </v-list-item>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <!--
@@ -78,6 +92,9 @@
 
 >>>>>>> 088410f2d2f734197810ebbc2fb6f3199a1dbdc0
                 <v-divider class="my-2"></v-divider>
+=======
+  <v-divider class="my-2"></v-divider>
+>>>>>>> 6d62b3918dd21dd73d834e4844f98c2506514e1d
 
                 <v-list-item
                   color="grey-lighten-4"
@@ -88,6 +105,10 @@
             </v-sheet>
           </v-col>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d62b3918dd21dd73d834e4844f98c2506514e1d
 
 
             <v-sheet
@@ -96,6 +117,7 @@
               rounded="lg" >
             <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
             </v-sheet>
+<<<<<<< HEAD
 =======
           
           <v-col>
@@ -125,6 +147,9 @@
           </v-col>
           
 >>>>>>> 088410f2d2f734197810ebbc2fb6f3199a1dbdc0
+=======
+
+>>>>>>> 6d62b3918dd21dd73d834e4844f98c2506514e1d
         </v-row>
       </v-container>
     </v-main>
@@ -137,13 +162,15 @@
 <script setup>
 import QnA from './components/QnA.vue'
 import wiki from './components/wiki.vue'
-import viewwiki from './components/viewwiki.vue'
 import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
 import { ref, onMounted, computed } from 'vue'
 import Cookies from 'js-cookie'
 const username = ref(Cookies.get('username'))
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6d62b3918dd21dd73d834e4844f98c2506514e1d
 const currentComponent = ref(QnA)
 const itemsPerPage = 5; // 페이지당 항목 수
 const currentPage = ref(1); // 현재 페이지
@@ -163,6 +190,7 @@ onMounted(async () => {
 const totalPages = computed(() => Math.ceil(totalItems.value / itemsPerPage)); // 전체 페이지 수
 function changePage(page) {
   currentPage.value = page;
+<<<<<<< HEAD
 =======
 // import Child from './components/Child.vue'
 // import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
@@ -207,6 +235,8 @@ function showComponent(link){
   }
 
 >>>>>>> 088410f2d2f734197810ebbc2fb6f3199a1dbdc0
+=======
+>>>>>>> 6d62b3918dd21dd73d834e4844f98c2506514e1d
 }
 function showComponent(link) {
   if (link === 'QnA') {
@@ -230,28 +260,4 @@ function showComponent(link) {
 function handleSignupSuccess() {
   currentComponent.value = QnA
 }
-</script>
-
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyB2VE7M9RE5hCW5ZGVMHZGrCWV8TUQmP70",
-    authDomain: "team2-kms.firebaseapp.com",
-    projectId: "team2-kms",
-    storageBucket: "team2-kms.appspot.com",
-    messagingSenderId: "1047209731876",
-    appId: "1:1047209731876:web:2749b1d1ed2d262e96b5b1",
-    measurementId: "G-4MRK1CH97W"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
 </script>
