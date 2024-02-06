@@ -92,7 +92,7 @@
 <script setup>
 
 // import Child from './components/Child.vue'
-import data from '/home/dhpark/code/team2/json-server/db.json'
+import data from '/home/jelly/code/HW-knowledge-management/json-server/db.json'
 import {ref} from 'vue'
 const message = ref('')
 
