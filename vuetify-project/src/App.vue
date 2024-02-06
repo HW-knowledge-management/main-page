@@ -35,7 +35,8 @@
 
         <div>
           <input v-model="message" placeholder="Search">
-          <button @click="search">검색</button>
+          <!-- <v-text-field v-model="message" :rules="nameRules" label="Search"></v-text-field> -->
+          <v-btn variant="tonal" @click="search()">검색</v-btn>
         </div>
       </v-container>
     </v-app-bar>
@@ -72,7 +73,7 @@
             >
 
 
-            <searchdata :contentOfWIKI="message"/>
+            <searchdata :contentOfWIKI="sendMessage"/>
               <!--  
               <li v-for = "(dt) in dts">
                 {{ dt.Question }}
@@ -103,10 +104,13 @@
 import searchdata from './components/search.vue'
 import {ref} from 'vue'
 const message = ref('')
+let sendMessage = ref('')
 //const dts = ref(data)
 
 function search() {
   console.log("검색어 : ", message.value)
+  sendMessage.value = message.value
+
 }
 
 
