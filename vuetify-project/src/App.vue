@@ -71,7 +71,11 @@
               rounded="lg"
             >
           
-            <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
+            <component :is="currentComponent" 
+            @changeComponent="handleSignupSuccess"
+            @callAnswer="callAnswer"
+            :questionId="questionId"
+            />
             </v-sheet>
           </v-col>
         </v-row>
@@ -82,9 +86,11 @@
 
 <script setup>
 import QnA from './components/QnA.vue'
+import answer from './components/answer.vue'
 import wiki from './components/wiki.vue'
 import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
+
 import { ref, onMounted } from 'vue'
 import Cookies from 'js-cookie'
 
@@ -92,6 +98,7 @@ const userId = ref(Cookies.get('userId'))
 
 const currentComponent = ref(QnA)
 
+const questionId = ref('')
 onMounted(() => {
   if(!userId.value){
     currentComponent.value = signin
@@ -100,7 +107,9 @@ onMounted(() => {
 
 function showComponent(link){
   if(link === 'QnA'){
+    console.log(Cookies.get('userId'))
     if(!Cookies.get('userId')){
+      console.log("Tset")
     currentComponent.value = signin
   }
     else {currentComponent.value = QnA}
@@ -119,6 +128,12 @@ function showComponent(link){
 
 function handleSignupSuccess(){
   currentComponent.value = QnA
+}
+
+function callAnswer(getQuestionId) {
+//  currentComponent.value = { answer: { "test": questionId } }
+  questionId.value = getQuestionId
+  currentComponent.value = answer
 }
 
 </script>

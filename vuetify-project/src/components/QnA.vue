@@ -1,6 +1,11 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, defineEmits } from 'vue'
 import Cookies from 'js-cookie'
+
+const emits = defineEmits(['callAnswer'])
+function callAnswerHandler(questionId) {
+    emits('callAnswer', questionId)
+}
 
 const currentPage = ref(1)
 const itemsPerPage = 5
@@ -31,7 +36,6 @@ async function getList() {
 getList();
 
 async function submitForm() {
-    console.log("test")
     const newQuestion = {
             "id" : questions.value.length + 1 + '',
             "userId" : Cookies.get('userId'),
@@ -71,7 +75,8 @@ async function submitForm() {
         <input type="submit" value="확인" />
     </form>
     <div>
-        <div v-for="(item, index) in paginatedQuestions" :key="index">
+        <div v-for="(item, index) in paginatedQuestions" :key="index" 
+        @click="callAnswerHandler(item.id)">
             {{ item.title }} - {{ item.content }}
         </div>
     </div>

@@ -24,7 +24,7 @@ async function submitForm() {
     if(!result){
         username.value = ''
         password.value = ''
-        Cookies.remove('username')
+        Cookies.remove('userId')
         alert('없는 ID입니다.')
     } else{
 

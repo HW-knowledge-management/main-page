@@ -21,8 +21,6 @@ async function submitForm() {
     
     const result = userData.value.find(item => item.userId === username.value)
 
-    console.log(userData.value.length)
-
     if(result){
         alert('중복되는 ID입니다.')
         username.value = ''
