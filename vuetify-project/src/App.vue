@@ -45,6 +45,10 @@
                </v-list-item>
                <v-list-item link title="sign-in" @click="showComponent('sign-in')">                
                </v-list-item>
+               <v-list-item link title="view-wiki" @click="showComponent('view-wiki')">                
+               </v-list-item>
+               <v-list-item link title="wiki" @click="showComponent('wiki')">                
+               </v-list-item>
 
 <!--
                 <v-list-item
@@ -74,7 +78,10 @@
             <component :is="currentComponent" 
             @changeComponent="handleSignupSuccess"
             @callAnswer="callAnswer"
+            @callWiki="callWiki"
+            @callWikiChild="callWikiChild"
             :questionId="questionId"
+            :wikiId="wikiId"
             />
             </v-sheet>
           </v-col>
@@ -90,6 +97,8 @@ import answer from './components/answer.vue'
 import wiki from './components/wiki.vue'
 import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
+import viewwiki from './components/viewwiki.vue'
+import childwiki from './components/wikichild.vue'
 
 import { ref, onMounted } from 'vue'
 import Cookies from 'js-cookie'
@@ -99,6 +108,8 @@ const userId = ref(Cookies.get('userId'))
 const currentComponent = ref(QnA)
 
 const questionId = ref('')
+const wikiId = ref('')
+
 onMounted(() => {
   if(!userId.value){
     currentComponent.value = signin
@@ -118,6 +129,11 @@ function showComponent(link){
     currentComponent.value = signin
   }
     else {currentComponent.value = wiki}
+  } else if(link === 'view-wiki'){
+    if(!Cookies.get('userId')){
+    currentComponent.value = signin
+  }
+    else {currentComponent.value = viewwiki}
   } else if(link === 'sign-up'){
     currentComponent.value = signup
   } else if(link === 'sign-in'){
@@ -136,4 +152,13 @@ function callAnswer(getQuestionId) {
   currentComponent.value = answer
 }
 
+function callWiki(){
+  wikiId.value = wikiId
+  currentComponent.value = viewwiki
+}
+
+function callWikiChild(getwikiId){
+  wikiId.value = getwikiId
+  currentComponent.value = childwiki
+}
 </script>
