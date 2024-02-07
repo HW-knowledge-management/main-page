@@ -12,6 +12,15 @@ import App from './App.vue'
 
 // Composables
 import { createApp } from 'vue'
+// import router from './components/router/index'
+
+// Vue.config.productionTip = false
+
+// new Vue({
+// 	router,
+// 	render, h => h(App),
+// }).$mount('#app')
+// ;
 
 const app = createApp(App)
 

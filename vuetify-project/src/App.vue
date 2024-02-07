@@ -7,7 +7,6 @@
           color="grey-darken-1"
           size="32"
         ></v-avatar>
-
         <v-btn
           v-for="link in links"
           :key="link"
@@ -15,10 +14,8 @@
           variant="text"
         ></v-btn>
         <v-spacer></v-spacer>
-
         <v-responsive max-width="160">
           <v-text-field
-            ref="searchField"
             density="compact"
             flat
             hide-details
@@ -28,35 +25,25 @@
             variant="solo-filled"
           ></v-text-field>
         </v-responsive>
-
-        <!-- <input v-model="message" placeholder="Search"> -->
-
-        <div>
-          <input v-model="message" placeholder="Search">
-          <!-- <v-text-field v-model="message" :rules="nameRules" label="Search"></v-text-field> -->
-          <v-btn variant="tonal" @click="search()">검색</v-btn>
-        </div>
       </v-container>
     </v-app-bar>
-
     <v-main class="bg-grey-lighten-3">
-      
       <v-container>
         <v-row>
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
-               <v-list-item link title="QnA" @click="showComponent('QnA')">                
+               <v-list-item link title="QnA" @click="showComponent('QnA')">
                </v-list-item>
-               <v-list-item link title="wiki" @click="showComponent('wiki')">                               
+               <v-list-item link title="wiki" @click="showComponent('wiki')">
                </v-list-item>
-               <v-list-item link title="viewwiki" @click="showComponent('viewwiki')">                               
+               <v-list-item link title="viewwiki" @click="showComponent('viewwiki')">
                </v-list-item>
-               <v-list-item link title="sign-up" @click="showComponent('sign-up')">                
+               <v-list-item link title="sign-up" @click="showComponent('sign-up')">
                </v-list-item>
-               <v-list-item link title="sign-in" @click="showComponent('sign-in')">                
+               <v-list-item link title="sign-in" @click="showComponent('sign-in')">
                </v-list-item>
-
+              
 <!--
                 <v-list-item
                   v-for="n in 5"
@@ -66,7 +53,6 @@
                 ></v-list-item>
 -->
                 <v-divider class="my-2"></v-divider>
-
                 <v-list-item
                   color="grey-lighten-4"
                   link
@@ -80,20 +66,7 @@
               min-height="70vh"
               rounded="lg"
             >
-            <!--<component :is="currentComponent" @changeComponent="handleSignupSuccess"/> -->
-
-
-<!--          <searchdata :contentOfWIKI="sendMessage"/>
-              <li v-for = "(dt) in dts">
-                {{ dt.Question }}
-              </li>
-              
-              <p>{{message}}</p>
-              <h1>hi</h1>
--->
-              <!-- <v-list-item link title="QnA" @click="showComponent('QnA')">                
-              </v-list-item> -->
-
+            <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
             </v-sheet>
           </v-col>
         </v-row>
@@ -108,24 +81,7 @@ import wiki from './components/wiki.vue'
 import viewwiki from './components/viewwiki.vue'
 import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
-import { ref, onMounted } from 'vue'
-import Cookies from 'js-cookie'
-
-const username = ref(Cookies.get('username'))
-// import Child from './components/Child.vue'
-// import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
-import searchdata from './components/search.vue'
-
-const message = ref('')
-let sendMessage = ref('')
-//const dts = ref(data)
-
-function search() {
-  console.log("검색어 : ", message.value)
-  sendMessage.value = message.value
-
-}
-
+const currentComponent = ref(QnA)
 function showComponent(link){
   if(link === 'QnA'){
     currentComponent.value = QnA
@@ -135,14 +91,34 @@ function showComponent(link){
     currentComponent.value = signup
   } else if(link === 'sign-in'){
     currentComponent.value = signin
-  } else if(link === 'viewwiki') {
+  } else if(link === 'viewwiki'){
     currentComponent.value = viewwiki
   }
-
 }
-
 function handleSignupSuccess(){
   currentComponent.value = QnA
+}
+// 15:27
+// sign-up.vue
+// 15:27
+// import db from "@/json-server/db.json"
+import { ref, defineEmits } from 'vue'
+
+const emit = defineEmits(['changeComponent'])
+const username = ref('')
+const password = ref('')
+const userData = ref(null)
+async function submitForm() {
+    const userData = {
+        username: username.value,
+        password: password.value
+    }
+    const res = await fetch(
+        `http://localhost:3001/User`
+    )
+    userData.value = await res.json()
+    console.log(userData.value.userId)
+//  emit('changeComponent');
 }
 </script>
 

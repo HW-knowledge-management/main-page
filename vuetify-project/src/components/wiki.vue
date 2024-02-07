@@ -16,7 +16,7 @@ async function submitForm() {
         `http://localhost:3000/wiki`
     )
     userData.value = await res.json()
-    const result = userData.value.find(item => item.title == '')
+    const result = userData.value.find(item => item.title.value == '')
 
     console.log(title.value);
     if (result) {
