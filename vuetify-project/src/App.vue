@@ -88,24 +88,24 @@ import signin from './components/sign-in.vue'
 import { ref, onMounted } from 'vue'
 import Cookies from 'js-cookie'
 
-const username = ref(Cookies.get('username'))
+const userId = ref(Cookies.get('userId'))
 
 const currentComponent = ref(QnA)
 
 onMounted(() => {
-  if(!username.value){
+  if(!userId.value){
     currentComponent.value = signin
   }
 })
 
 function showComponent(link){
   if(link === 'QnA'){
-    if(!Cookies.get('username')){
+    if(!Cookies.get('userId')){
     currentComponent.value = signin
   }
     else {currentComponent.value = QnA}
   } else if(link === 'wiki'){
-    if(!Cookies.get('username')){
+    if(!Cookies.get('userId')){
     currentComponent.value = signin
   }
     else {currentComponent.value = wiki}

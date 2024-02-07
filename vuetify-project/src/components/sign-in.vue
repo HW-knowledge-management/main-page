@@ -6,6 +6,7 @@ const emit = defineEmits(['changeComponent'])
 
 const username = ref('')
 const password = ref('')
+const userId = ref('')
 const userData = ref(null)
 
 async function submitForm() {
@@ -29,14 +30,15 @@ async function submitForm() {
 
         if(password.value === result.password){
 
-            Cookies.set('username', username.value, { expires: 1, path: '' })
-            Cookies.set('password', password.value, { expires: 1, path: '' })
+            Cookies.set('userId', result.id, { expires: 1, path: '' })
+//            Cookies.set('username', username.value, { expires: 1, path: '' })
+//            Cookies.set('password', password.value, { expires: 1, path: '' })
             emit('changeComponent');
         }
         else {
             username.value = ''
             password.value = ''
-            Cookies.remove('username')
+            Cookies.remove('userId')
             alert('비밀번호가 틀렸습니다.')
         }
 

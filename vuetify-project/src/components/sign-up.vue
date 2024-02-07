@@ -17,7 +17,8 @@ async function submitForm() {
     )
   
     userData.value = await res.json()
-
+    const userId = userData.value.length + 1 + ''
+    
     const result = userData.value.find(item => item.userId === username.value)
 
     console.log(userData.value.length)
@@ -29,7 +30,7 @@ async function submitForm() {
         const myData = {
             "username" : username.value,
             "password" : password.value,
-            "id" : userData.value.length + 1 + ''
+            "id" : userId
             }
         await fetch('http://localhost:3001/User', {
             method: 'POST', // 또는 'PUT', 'GET'
@@ -40,6 +41,7 @@ async function submitForm() {
  
         })
 
+        Cookies.set('userId', userId, { expires: 1, path: '' })
         Cookies.set('username', username.value, { expires: 1, path: '' })
         Cookies.set('password', password.value, { expires: 1, path: '' })
 
