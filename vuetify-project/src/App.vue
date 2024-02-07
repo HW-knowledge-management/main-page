@@ -13,9 +13,12 @@
           :text="link"
           variant="text"
         ></v-btn>
+
         <v-spacer></v-spacer>
         <v-responsive max-width="250">
+
           <v-text-field
+            ref="searchField"
             density="compact"
             flat
             hide-details
@@ -24,10 +27,19 @@
             single-line
             variant="solo-filled"
           ></v-text-field>
-        </v-responsive>
+        </v-responsive> -->
+
+        <!-- <input v-model="message" placeholder="Search"> -->
+
+        <div>
+          <input v-model="message" placeholder="Search">
+          <!-- <v-text-field v-model="message" :rules="nameRules" label="Search"></v-text-field> -->
+          <v-btn variant="tonal" @click="search()">검색</v-btn>
+        </div>
       </v-container>
     </v-app-bar>
     <v-main class="bg-grey-lighten-3">
+      
       <v-container>
         <v-row>
           <v-col cols="3">
@@ -37,12 +49,14 @@
                </v-list-item>
                <v-list-item link title="wiki" @click="showComponent('wiki')">
                </v-list-item>
+
                <v-list-item link title="sign-up" @click="showComponent('sign-up')">
+
                </v-list-item>
                <v-list-item link title="sign-in" @click="showComponent('sign-in')">
                </v-list-item>
 
-                <v-divider class="my-2"></v-divider>
+  <v-divider class="my-2"></v-divider>
 
                 <v-list-item
                   color="grey-lighten-4"
@@ -54,12 +68,14 @@
           </v-col>
 
 
+
             <v-sheet
               min-height="70vh"
 	      min-width="700"
               rounded="lg" >
             <component :is="currentComponent" @changeComponent="handleSignupSuccess"/>
             </v-sheet>
+
         </v-row>
       </v-container>
     </v-main>
@@ -120,4 +136,3 @@ function handleSignupSuccess() {
   currentComponent.value = QnA
 }
 </script>
-

@@ -60,6 +60,6 @@ async function submitForm() {
 
     <label>password</label>
     <input id="password" type="password" v-model="password">
-    <input type="submit" value="확인"></input>
+    <input type="submit" value="확인"/>
 </form>
 </template>
