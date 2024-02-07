@@ -19,7 +19,7 @@ async function submitForm() {
   
     userData.value = await res.json()
 
-    const result = userData.value.find(item => item.userId === username.value)
+    const result = userData.value.find(item => item.username === username.value)
 
     if(!result){
         username.value = ''
