@@ -48,6 +48,18 @@
           <v-col cols="2">
             <v-sheet rounded="lg">
               <v-list rounded="lg">
+               <v-list-item link title="QnA" @click="showComponent('QnA')">                
+               </v-list-item>
+               <v-list-item link title="wiki" @click="showComponent('wiki')">                               
+               </v-list-item>
+               <v-list-item link title="viewwiki" @click="showComponent('viewwiki')">                               
+               </v-list-item>
+               <v-list-item link title="sign-up" @click="showComponent('sign-up')">                
+               </v-list-item>
+               <v-list-item link title="sign-in" @click="showComponent('sign-in')">                
+               </v-list-item>
+
+<!--
                 <v-list-item
                   v-for="n in 5"
                   :key="n"
@@ -99,6 +111,15 @@
 </template>
 
 <script setup>
+import QnA from './components/QnA.vue'
+import wiki from './components/wiki.vue'
+import viewwiki from './components/viewwiki.vue'
+import signup from './components/sign-up.vue'
+import signin from './components/sign-in.vue'
+import { ref, onMounted } from 'vue'
+import Cookies from 'js-cookie'
+
+const username = ref(Cookies.get('username'))
 // import Child from './components/Child.vue'
 // import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
 import searchdata from './components/search.vue'
@@ -137,6 +158,8 @@ function showComponent(link){
     currentComponent.value = signup
   } else if(link === 'sign-in'){
     currentComponent.value = signin
+  } else if(link === 'viewwiki') {
+    currentComponent.value = viewwiki
   }
 
 }
