@@ -1,6 +1,6 @@
 {
-  "name": "vuetify-project",
-  "version": "0.0.0",
+  "name": "hw-knowledge-management",
+  "version": "0.2.0",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--no-warnings' vite",
     "build": "vite build",
@@ -22,5 +22,9 @@
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.0.0",
     "vite-plugin-vuetify": "^2.0.0"
-  }
+  },
+  "description": "This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
