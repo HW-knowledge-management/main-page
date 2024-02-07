@@ -1,21 +1,26 @@
 <script setup>
-//import Vue from "vue"
-// import axios from 'axios'
+import { ref }  from 'vue'
+const props = defineProps(['contentOfWIKI'])
+const searchData = ref(null)
+async function getList() {
+    const res = await fetch(
+        `http://localhost:3000/wiki`
+//        `https://mmmmmmm-dry-glade-6852.fly.dev/wiki`
+    )
+    searchData.value = await res.json()
 
-// Vue.prototype.$http = axios
-// </script>
+}
 
-// <script>
-// export const actions = {
-//   viewWiki( { commit }) {
-//     this.$axios.get('http://localhost:3000/wiki').then(rs => {
-//       commit('set_board_list', rs.data);
-//     });
-//   }
-// }
-
+getList()
 </script>
 
 <template>
-  안녕하세요..
+<h1>Search</h1>
+<hr />
+<div>
+    <div v-for="item in searchData">
+        <p>{{item.title}}</p>
+    </div>
+</div>
 </template>
+

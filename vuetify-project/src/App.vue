@@ -14,11 +14,9 @@
           :text="link"
           variant="text"
         ></v-btn>
-
-
         <v-spacer></v-spacer>
 
-        <!-- <v-responsive max-width="160">
+        <v-responsive max-width="160">
           <v-text-field
             ref="searchField"
             density="compact"
@@ -29,7 +27,7 @@
             single-line
             variant="solo-filled"
           ></v-text-field>
-        </v-responsive> -->
+        </v-responsive>
 
         <!-- <input v-model="message" placeholder="Search"> -->
 
@@ -66,7 +64,7 @@
                   link
                   :title="`List Item ${n}`"
                 ></v-list-item>
-
+-->
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item
@@ -77,16 +75,15 @@
               </v-list>
             </v-sheet>
           </v-col>
-          
           <v-col>
             <v-sheet
               min-height="70vh"
               rounded="lg"
             >
+            <!--<component :is="currentComponent" @changeComponent="handleSignupSuccess"/> -->
 
 
-            <searchdata :contentOfWIKI="sendMessage"/>
-              <!--  
+<!--          <searchdata :contentOfWIKI="sendMessage"/>
               <li v-for = "(dt) in dts">
                 {{ dt.Question }}
               </li>
@@ -94,16 +91,11 @@
               <p>{{message}}</p>
               <h1>hi</h1>
 -->
-
-
               <!-- <v-list-item link title="QnA" @click="showComponent('QnA')">                
               </v-list-item> -->
 
-
-
             </v-sheet>
           </v-col>
-          
         </v-row>
       </v-container>
     </v-main>
@@ -123,7 +115,7 @@ const username = ref(Cookies.get('username'))
 // import Child from './components/Child.vue'
 // import data from '/home/wsl/code/HW-knowledge-management/json-server/db.json'
 import searchdata from './components/search.vue'
-import {ref} from 'vue'
+
 const message = ref('')
 let sendMessage = ref('')
 //const dts = ref(data)
@@ -134,25 +126,10 @@ function search() {
 
 }
 
-
-  const links = [
-    'Dashboard',
-    'Messages',
-    'Profile',
-    'Updates',
-  ]
-</script>
 function showComponent(link){
   if(link === 'QnA'){
-    if(!Cookies.get('username')){
-    currentComponent.value = signin
-  }
-    else {currentComponent.value = QnA}
+    currentComponent.value = QnA
   } else if(link === 'wiki'){
-  //   if(!Cookies.get('username')){
-  //   currentComponent.value = wiki
-  // }
-  //   else {currentComponent.value = wiki}
     currentComponent.value = wiki
   } else if(link === 'sign-up'){
     currentComponent.value = signup
