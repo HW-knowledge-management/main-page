@@ -41,6 +41,8 @@
                </v-list-item>
                <v-list-item link title="wiki" @click="showComponent('wiki')">                               
                </v-list-item>
+               <v-list-item link title="viewwiki" @click="showComponent('viewwiki')">                               
+               </v-list-item>
                <v-list-item link title="sign-up" @click="showComponent('sign-up')">                
                </v-list-item>
                <v-list-item link title="sign-in" @click="showComponent('sign-in')">                
@@ -83,6 +85,7 @@
 <script setup>
 import QnA from './components/QnA.vue'
 import wiki from './components/wiki.vue'
+import viewwiki from './components/viewwiki.vue'
 import signup from './components/sign-up.vue'
 import signin from './components/sign-in.vue'
 import { ref, onMounted } from 'vue'
@@ -114,6 +117,8 @@ function showComponent(link){
     currentComponent.value = signup
   } else if(link === 'sign-in'){
     currentComponent.value = signin
+  } else if(link === 'viewwiki') {
+    currentComponent.value = viewwiki
   }
 
 }

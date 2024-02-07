@@ -21,10 +21,10 @@ getList()
 <form @submit.prevent="submitForm()">
     <h2>질문하기</h2>
     <textarea></textarea>
-    <input type="submit" value="확인"></input>
+    <input type="submit" value="확인" />
 </form>
 <div>
-    <div v-for="item in questionData">
+    <div v-for="item in questionData" v-bind:key="item">
         {{ item.title }} - {{ item.content }}
     </div>
 </div>
