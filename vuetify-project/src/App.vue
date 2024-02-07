@@ -1,3 +1,4 @@
+
 <template>
   <v-app id="inspire">
     <v-app-bar flat>
@@ -134,3 +135,4 @@ function search() {
     }),
   }
 </script>
+

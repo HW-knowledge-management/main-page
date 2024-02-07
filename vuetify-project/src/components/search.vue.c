@@ -1,4 +1,3 @@
-
 <script setup>
 import { ref }  from 'vue'
 const props = defineProps(['contentOfWIKI'])
@@ -34,4 +33,3 @@ getList()
     </div>
 </div>
 </template>
-
